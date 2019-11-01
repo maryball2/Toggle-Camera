@@ -1,0 +1,13 @@
+#!/bin/sh
+
+MODULE="uvcvideo"
+
+if lsmod | grep "$MODULE" &> /dev/null ; then
+  sudo rmmod /lib/modules/4.19.80-1-MANJARO/kernel/drivers/media/usb/uvc/uvcvideo.ko.xz
+  echo "Camera turned off"
+  exit 0
+else
+  sudo insmod /lib/modules/4.19.80-1-MANJARO/kernel/drivers/media/usb/uvc/uvcvideo.ko.xz
+  echo "Camera turned on"
+  exit 1
+fi
